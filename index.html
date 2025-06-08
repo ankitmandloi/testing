@@ -1,12 +1,530 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>My Simple Page</title>
-</head>
-<body>
-    <h1>Welcome to My Simple HTML Page</h1>
-    <p>This is a paragraph of text.</p>
-    <a href="https://www.example.com">Visit Example.com</a>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Slow Organics - Purposefully Slow</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&family=Lora:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --primary-green: #4a6b4a; /* Earthy Green */
+        --secondary-brown: #a07855; /* Warm Brown */
+        --accent-cream: #f4e8d8; /* Soft Cream */
+        --text-dark: #3a3a3a;
+        --text-light: #f9f6f1;
+        --font-heading: 'Cormorant Garamond', serif;
+        --font-body: 'Lora', serif;
+      }
+
+      body {
+        margin: 0;
+        font-family: var(--font-body);
+        color: var(--text-dark);
+        background-color: var(--accent-cream);
+        line-height: 1.6;
+      }
+
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 20px;
+      }
+
+      header {
+        background-color: var(--primary-green);
+        color: var(--text-light);
+        padding: 40px 0;
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+      }
+
+      header::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: url('https://images.unsplash.com/photo-1542838183-6617a224c619?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w1MDcxMzJ8MHwxfHNlYXJjaHw1OHx8b3JnYW5pYyUyMGZhcm18ZW58MHx8fHwxNzE3NTQwODcwfDA&ixlib=rb-4.0.3&q=80&w=1920')
+          no-repeat center center/cover;
+        opacity: 0.15; /* Subtle overlay for organic feel */
+        z-index: 1;
+      }
+
+      .header-content {
+        position: relative;
+        z-index: 2;
+      }
+
+      header h1 {
+        font-family: var(--font-heading);
+        font-size: 4.5em;
+        margin: 0;
+        letter-spacing: 2px;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+      }
+
+      header p {
+        font-size: 1.8em;
+        margin-top: 10px;
+        font-style: italic;
+        opacity: 0.9;
+      }
+
+      .hero-section {
+        display: flex;
+        align-items: center;
+        padding: 80px 0;
+        background-color: var(--accent-cream);
+        position: relative;
+        overflow: hidden;
+      }
+
+      .hero-section::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: url('https://images.unsplash.com/photo-1600330386616-655f40196813?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w1MDcxMzJ8MHwxfHNlYXJjaHw1OHx8b3JnYW5pYyUyMGZvb2QlMjB0ZXh0dXJlJTIwYmFja2dyb3VuZHxlbnwwfHx8fDE3MTc1NDEwNDV8MA&ixlib=rb-4.0.3&q=80&w=1920')
+          no-repeat center center/cover;
+        opacity: 0.05; /* Very subtle texture */
+        z-index: 1;
+      }
+
+      .hero-content {
+        flex: 1;
+        padding-right: 40px;
+        position: relative;
+        z-index: 2;
+      }
+
+      .hero-content h2 {
+        font-family: var(--font-heading);
+        font-size: 3.2em;
+        color: var(--primary-green);
+        margin-bottom: 20px;
+      }
+
+      .hero-content p {
+        font-size: 1.2em;
+        line-height: 1.8;
+        margin-bottom: 30px;
+      }
+
+      .hero-image {
+        flex: 1;
+        text-align: right;
+        position: relative;
+        z-index: 2;
+      }
+
+      .hero-image img {
+        max-width: 100%;
+        height: auto;
+        border-radius: 10px;
+        box-shadow: 8px 8px 15px rgba(0, 0, 0, 0.1);
+        transform: rotate(-3deg); /* Slight organic tilt */
+        transition: transform 0.3s ease-in-out;
+      }
+
+      .hero-image img:hover {
+        transform: rotate(0deg) scale(1.02);
+      }
+
+      .btn {
+        display: inline-block;
+        background-color: var(--secondary-brown);
+        color: var(--text-light);
+        padding: 15px 30px;
+        text-decoration: none;
+        border-radius: 50px;
+        font-size: 1.1em;
+        font-weight: 600;
+        transition: background-color 0.3s ease, transform 0.2s ease;
+        box-shadow: 3px 3px 8px rgba(0, 0, 0, 0.15);
+      }
+
+      .btn:hover {
+        background-color: #8c6441; /* Darker brown on hover */
+        transform: translateY(-3px);
+      }
+
+      .products-section {
+        background-color: var(--text-light);
+        padding: 80px 0;
+        text-align: center;
+        border-top: 1px solid rgba(0, 0, 0, 0.05);
+        border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        position: relative;
+        overflow: hidden;
+      }
+
+      .products-section::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: url('https://images.unsplash.com/photo-1517487834780-e83c072c4765?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w1MDcxMzJ8MHwxfHNlYXJjaHw1OHx8b3JnYW5pYyUyMGdyYWlufGVufDB8fHx8MTcxNzU0MTE1MHww&ixlib=rb-4.0.3&q=80&w=1920')
+          no-repeat center center/cover;
+        opacity: 0.03; /* Very subtle texture */
+        z-index: 1;
+      }
+
+      .products-section h2 {
+        font-family: var(--font-heading);
+        font-size: 3em;
+        color: var(--primary-green);
+        margin-bottom: 50px;
+        position: relative;
+        z-index: 2;
+      }
+
+      .product-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 40px;
+        position: relative;
+        z-index: 2;
+      }
+
+      .product-card {
+        background-color: var(--accent-cream);
+        border-radius: 10px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        padding: 30px;
+        text-align: left;
+        transition: transform 0.3s ease-in-out, box-shadow 0.3s ease;
+      }
+
+      .product-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+      }
+
+      .product-card img {
+        max-width: 100%;
+        height: 200px;
+        object-fit: contain;
+        margin-bottom: 20px;
+        border-radius: 8px;
+        background-color: #ffffff; /* White background for product image */
+        padding: 10px;
+      }
+
+      .product-card h3 {
+        font-family: var(--font-heading);
+        font-size: 2em;
+        color: var(--secondary-brown);
+        margin-bottom: 10px;
+      }
+
+      .product-card p {
+        font-size: 1.1em;
+        color: var(--text-dark);
+        margin-bottom: 20px;
+      }
+
+      .product-card .btn {
+        padding: 12px 25px;
+        font-size: 1em;
+      }
+
+      .our-story-section {
+        background-color: var(--accent-cream);
+        padding: 80px 0;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .our-story-section::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: url('https://images.unsplash.com/photo-1497992928860-264b38d3885d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w1MDcxMzJ8MHwxfHNlYXJjaHwyMHx8b3JnYW5pYyUyMHBsYW50cyUyMHRleHR1cmV8ZW58MHx8fHwxNzE3NTQxMjMwfDA&ixlib=rb-4.0.3&q=80&w=1920')
+          no-repeat center center/cover;
+        opacity: 0.04; /* Light organic texture */
+        z-index: 1;
+      }
+
+      .story-content {
+        display: flex;
+        align-items: center;
+        gap: 60px;
+        position: relative;
+        z-index: 2;
+      }
+
+      .story-text {
+        flex: 2;
+      }
+
+      .story-text h2 {
+        font-family: var(--font-heading);
+        font-size: 3em;
+        color: var(--primary-green);
+        margin-bottom: 25px;
+      }
+
+      .story-text p {
+        font-size: 1.15em;
+        line-height: 1.9;
+        margin-bottom: 20px;
+      }
+
+      .story-image {
+        flex: 1;
+        text-align: center;
+      }
+
+      .story-image img {
+        max-width: 100%;
+        height: auto;
+        border-radius: 50%; /* Rounded image for a softer feel */
+        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+        filter: saturate(1.1); /* Slightly enhance colors */
+      }
+
+      footer {
+        background-color: var(--primary-green);
+        color: var(--text-light);
+        padding: 40px 0;
+        text-align: center;
+        font-size: 1em;
+      }
+
+      footer p {
+        margin: 0;
+        opacity: 0.8;
+      }
+
+      footer a {
+        color: var(--accent-cream);
+        text-decoration: none;
+        transition: color 0.3s ease;
+      }
+
+      footer a:hover {
+        color: #fff;
+      }
+
+      /* Responsive Design */
+      @media (max-width: 768px) {
+        header h1 {
+          font-size: 3em;
+        }
+
+        header p {
+          font-size: 1.4em;
+        }
+
+        .hero-section {
+          flex-direction: column;
+          text-align: center;
+          padding: 60px 0;
+        }
+
+        .hero-content {
+          padding-right: 0;
+          margin-bottom: 40px;
+        }
+
+        .hero-image {
+          text-align: center;
+        }
+
+        .hero-image img {
+          transform: none;
+        }
+
+        .products-section h2,
+        .our-story-section h2 {
+          font-size: 2.5em;
+        }
+
+        .product-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .story-content {
+          flex-direction: column;
+          gap: 40px;
+          text-align: center;
+        }
+
+        .story-image img {
+          max-width: 70%;
+        }
+      }
+
+      @media (max-width: 480px) {
+        header h1 {
+          font-size: 2.2em;
+        }
+
+        header p {
+          font-size: 1.1em;
+        }
+
+        .hero-content h2 {
+          font-size: 2.5em;
+        }
+
+        .btn {
+          padding: 12px 20px;
+          font-size: 1em;
+        }
+
+        .products-section h2,
+        .our-story-section h2 {
+          font-size: 2em;
+        }
+
+        .product-card h3 {
+          font-size: 1.8em;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="header-content">
+        <h1>Slow Organics</h1>
+        <p>Purposefully Slow</p>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero-section container">
+        <div class="hero-content">
+          <h2>Embrace the Purity of Nature</h2>
+          <p>
+            At Slow Organics, we believe in a deliberate return to nature's
+            rhythms. We meticulously source and craft pure, organic products
+            that nourish your body and soul. Experience the authentic taste and
+            health benefits that only truly organic produce can offer.
+          </p>
+          <a href="#products" class="btn">Explore Our Products</a>
+        </div>
+        <div class="hero-image">
+          <img
+            src="https://images.unsplash.com/photo-1542838183-6617a224c619?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w1MDcxMzJ8MHwxfHNlYXJjaHw0OXx8b3JnYW5pYyUyMGZhcm18ZW58MHx8fHwxNzE3NTQwODUxfDA&ixlib=rb-4.0.3&q=80&w=600"
+            alt="Organic Farm Field"
+          />
+        </div>
+      </section>
+
+      <section id="products" class="products-section container">
+        <h2>Our Pure Organic Offerings</h2>
+        <div class="product-grid">
+          <!-- Product 1: Wood Pressed Groundnut Oil -->
+          <div class="product-card">
+            <img
+              src="https://images.unsplash.com/photo-1627961914947-f4e9112999e5?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w1MDcxMzJ8MHwxfHNlYXJjaHwxNXx8d29vZCUyMHByZXNzZWQlMjBvaWx8ZW58MHx8fHwxNzE3NTQxMDczfDA&ixlib=rb-4.0.3&q=80&w=400"
+              alt="Wood Pressed Groundnut Oil"
+            />
+            <h3>Wood Pressed Groundnut Oil</h3>
+            <p>
+              Extracted using traditional wood-pressing methods, preserving its
+              natural nutrients and rich aroma. Perfect for healthy cooking.
+            </p>
+            <a
+              href="https://www.amazon.com/your-product-link-1"
+              target="_blank"
+              class="btn"
+              >Buy on Amazon</a
+            >
+          </div>
+
+          <!-- Product 2: Moringa Powder -->
+          <div class="product-card">
+            <img
+              src="https://images.unsplash.com/photo-1622350791244-67d4f9b87a8a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w1MDcxMzJ8MHwxfHNlYXJjaHwxNHx8bW9yaW5nYXxlbnwwfHx8fDE3MTc1NDEwNzJ8MA&ixlib=rb-4.0.3&q=80&w=400"
+              alt="Moringa Powder"
+            />
+            <h3>Pure Moringa Powder</h3>
+            <p>
+              A nutrient-dense superfood, rich in vitamins, minerals, and
+              antioxidants. Boost your daily wellness naturally.
+            </p>
+            <a
+              href="https://www.amazon.com/your-product-link-2"
+              target="_blank"
+              class="btn"
+              >Buy on Amazon</a
+            >
+          </div>
+
+          <!-- Product 3: Wood Pressed Coconut Oil -->
+          <div class="product-card">
+            <img
+              src="https://images.unsplash.com/photo-1594967341399-52e697c11f71?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w1MDcxMzJ8MHwxfHNlYXJjaHwxMHx8Y29jb251dCUyMG9pbHxlbnwwfHx8fDE3MTc1NDEwNzF8MA&ixlib=rb-4.0.3&q=80&w=400"
+              alt="Wood Pressed Coconut Oil"
+            />
+            <h3>Wood Pressed Coconut Oil</h3>
+            <p>
+              Experience the wholesome goodness of pure coconut oil, ideal for
+              cooking, skin, and hair care. Naturally aromatic.
+            </p>
+            <a
+              href="https://www.amazon.com/your-product-link-3"
+              target="_blank"
+              class="btn"
+              >Buy on Amazon</a
+            >
+          </div>
+        </div>
+      </section>
+
+      <section class="our-story-section container">
+        <div class="story-content">
+          <div class="story-text">
+            <h2>Our Story: Purposefully Slow</h2>
+            <p>
+              In a world rushing towards instant gratification, Slow Organics
+              takes a conscious step back. We are founded on the principle that
+              the best things in life take time – from the natural growth of our
+              produce to the traditional methods of processing them.
+            </p>
+            <p>
+              We partner directly with organic farmers who share our commitment
+              to sustainable practices, ensuring every product you receive is
+              pure, potent, and ethically sourced. Our mission is to bring you
+              food that is as close to its natural state as possible, free from
+              chemicals and artificial additives.
+            </p>
+            <p>
+              Join us in embracing a lifestyle that values quality over speed,
+              and health over convenience.
+            </p>
+          </div>
+          <div class="story-image">
+            <img
+              src="https://images.unsplash.com/photo-1579621970795-87f59d5718a3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w1MDcxMzJ8MHwxfHNlYXJjaHwxNHx8b3JnYW5pYyUyMGhlYWx0aHxlbnwwfHx8fHwxNzE3NTQxMDczfDA&ixlib=rb-4.0.3&q=80&w=400"
+              alt="Hand holding organic produce"
+            />
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="container">
+        <p>&copy; 2025 Slow Organics. All rights reserved.</p>
+        <p>
+          <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a>
+        </p>
+      </div>
+    </footer>
+  </body>
 </html>
